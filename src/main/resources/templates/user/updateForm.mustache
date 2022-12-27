@@ -1,0 +1,51 @@
+{{>/layout/main-header}}
+
+<input type="hidden" id="userId" value="{{principal.id}}">
+
+<div class="container">
+    <div class="my_auth_box">
+        <div class="my_auth_form_box">
+            <div class="d-flex justify-content-center">
+
+                {{#principal}}
+                {{#profileImg}}
+                <img src="/upload/{{profileImg}}" class="my_profile_rounded_img_btn_lg" id="profile-img-btn_lg">
+                {{/profileImg}}
+                {{^profileImg}}
+                <img src="https://i1.sndcdn.com/avatars-000373392764-zp0p80-t500x500.jpg"
+                    class="my_profile_rounded_img_btn_lg" id="profile-img-btn_lg">
+                {{/profileImg}}
+                {{/principal}}
+
+                <form id="fileForm">
+                    <input type="file" class="my_hidden" id="profile-img-input" name="profileImgFile" />
+                </form>
+            </div>
+            <div class="my_error_box my_hidden">
+
+            </div>
+            <form>
+
+                <input id="username" class="my_auth_form_box_input" type="text" value="{{principal.username}}" required readonly />
+                <input id="password" class="my_auth_form_box_input" type="password" value="{{principal.password}}" maxlength="20"
+                    required readonly />
+                <input id="same-password" class="my_auth_form_box_input" type="password" value="{{principal.password}}"
+                    maxlength="20" required readonly />
+                <input class="my_auth_form_box_input" type="email" name="email" value="{{principal.email}}" maxlength="60"
+                    required />
+                <button id="btn-update" type="submit" class="my_secondary_btn">회원정보수정</button>
+            </form>
+            <div class="my_auth_form_box_link">
+                <div><a href="/login-form">로그인</a></div>
+                <div><a href="/user/password-reset-form">비밀번호 찾기</a></div>
+            </div>
+        </div>
+    </div>
+    <br />
+</div>
+
+<script src="/js/user/updateForm.js">
+
+</script>
+
+{{>/layout/footer}}
